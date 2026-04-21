@@ -42,9 +42,8 @@ jobs:
 
       - name: Run Docker container
         run: |
-        docker run -d -p 5000:5000 --name api-container flask-api:${{ github.sha }}
-        sleep 5
-          # Sleep for a few seconds to give the Flask app time to start up inside the container sleep 5
+          docker run -d -p 5000:5000 --name api-container flask-api:${{ github.sha }}
+          sleep 5
 
       - name: Test health endpoint
         run: curl -f http://localhost:5000/api/health
