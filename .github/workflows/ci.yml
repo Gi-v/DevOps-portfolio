@@ -61,7 +61,8 @@ jobs:
 
     steps:
       - name: Print pipeline summary
-        run: echo "Pipeline complete for commit: ${{ github.sha }}"
+        run: |
+          echo "Pipeline complete for commit: ${{ github.sha }}"
 
       - name: Test secretly
         env:
