@@ -16,7 +16,7 @@ def health_check():
     return jsonify({
         "status": "healthy",
         "message": "API is up and running!"
-    }), 200
+    }), 500# changed to 500 for error testing
 
 @app.route('/api/students', methods=['GET'])
 def get_all_students():
