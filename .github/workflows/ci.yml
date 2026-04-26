@@ -53,3 +53,25 @@ jobs:
         run: |
           docker stop api-container 
           docker rm api-container
+
+report: 
+  name: Code Coverage Report
+  needs: build-docker
+  runs-on: ubuntu-latest
+
+  steps:
+    #step5 print pipeline summary
+    - name: print pipeline summary
+      run: echo "Pipeline complete for commit: ${{ github.sha }}"
+
+    #steo 7 load and test secretly
+    - name: Test secretly
+      env:
+        MY_SECRET: ${{ secrets.LAB_SECRET }}
+      run: |
+        if [ -n "$MY_SECRET" ]; then
+            echo "Secret loaded successfully"
+          else
+            echo "Secret is missing!"
+            exit 1
+          fi
