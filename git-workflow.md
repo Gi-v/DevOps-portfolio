@@ -44,3 +44,44 @@ The `.gitignore` file tells Git which files or folders to ignore. You should use
 * **System Files:** Ignore OS-specific files like `.DS_Store` (macOS) or `Thumbs.db` (Windows).
 * **Dependencies:** Folders like `node_modules` or `target/` (for Java) which can be recreated using package managers.
 * **Logs & Build Artifacts:** Temporary files created during the build process that don't belong in version control.
+
+---
+
+6. Branching & Merging Workflow
+Branching is one of Git's most powerful features. It lets you develop features, fix bugs, or experiment in isolation without affecting the stable `main` branch.
+
+**The Standard Feature Branch Workflow:**
+
+1. **Create a new branch** from `main` for your work:
+   ```
+   git checkout -b feature/add-login-page
+   ```
+
+2. **Make your changes**, then stage and commit them with a good message:
+   ```
+   git add .
+   git commit -m "feat: add login page with form validation"
+   ```
+
+3. **Push the branch** to GitHub:
+   ```
+   git push origin feature/add-login-page
+   ```
+
+4. **Open a Pull Request (PR)** on GitHub so teammates can review your changes.
+
+5. **Merge the PR** into `main` once approved:
+   ```
+   git checkout main
+   git merge feature/add-login-page
+   ```
+
+6. **Delete the branch** after merging to keep the repo tidy:
+   ```
+   git branch -d feature/add-login-page
+   ```
+
+**Why branches matter in DevOps:**
+* **CI/CD pipelines** trigger automated tests on each branch before merging.
+* **Protected branches** (e.g., `main`) prevent unreviewed code from going to production.
+* **Short-lived branches** keep changes small and easy to review — a core DevOps practice.
